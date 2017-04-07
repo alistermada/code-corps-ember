@@ -1,5 +1,5 @@
 import Ember from 'ember';
-const { Route, inject: { service } } = Ember;
+const { Route, get, inject: { service } } = Ember;
 
 export default Route.extend({
 
@@ -7,7 +7,7 @@ export default Route.extend({
 
   actions: {
     resetPassword(password, passwordConfirmation) {
-      return this.get('ajax').request('/password/reset', {
+      return get(this, 'ajax').request('/password/reset', {
         method: 'POST',
         data: {
           password,
