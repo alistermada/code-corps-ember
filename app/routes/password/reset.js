@@ -1,8 +1,7 @@
 import Ember from 'ember';
 const { Route, inject: { service } } = Ember;
-import AuthenticatedRouteMixin from 'ember-simple-auth/mixins/authenticated-route-mixin';
 
-export default Route.extend(AuthenticatedRouteMixin, {
+export default Route.extend({
 
   ajax: service(),
 
