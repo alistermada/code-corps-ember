@@ -12,6 +12,8 @@ export default Route.extend({
         data: {
           email
         }
+      }).then(() => {
+        this.transitionTo('index');
       });
     }
   }

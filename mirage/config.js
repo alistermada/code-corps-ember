@@ -171,6 +171,19 @@ export default function() {
   this.patch('/organizations/:id');
 
   /**
+  * Password
+  */
+
+  // POST /password/forgot
+  this.post('/password/forgot', () => {
+
+    // just return something?
+    return new Mirage.Response(201, {}, {
+      email: 'abc123@gmail.com'
+    });
+  });
+
+  /**
   * Previews
   */
 
