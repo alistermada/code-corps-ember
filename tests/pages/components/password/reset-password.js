@@ -11,7 +11,7 @@ export default {
   scope: '.reset-password-form',
 
   sendResetPasswordSuccessfully(password, passwordConfirmation) {
-    this.password(email).passwordConfirmation(passwordConfirmation).submit();
+    this.password(password).passwordConfirmation(passwordConfirmation).submit();
   },
 
   password: fillable('#password'),
@@ -38,5 +38,5 @@ export default {
     scope: 'button'
   },
 
-  submit: clickable('button'),
+  submit: clickable('button')
 };

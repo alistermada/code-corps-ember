@@ -11,6 +11,7 @@ test('visiting /password/reset', function(assert) {
   andThen(() => {
     assert.equal(currentURL(), '/password/reset');
   });
+  passwordPage.resetPasswordForm.sendResetPasswordSuccessfully('uuidPassword');
 });
 
 test('visiting /password/forgot', function(assert) {

@@ -1,9 +1,15 @@
 import Ember from 'ember';
-const { Component, set, get } = Ember;
+const { Component, set, get, inject: { service } } = Ember;
 import { task } from 'ember-concurrency';
 
 export default Component.extend({
   classNames: ['reset-password-form'],
+
+  /**
+   * @property flashMessages
+   * @type Ember.Service
+   */
+  flashMessages: service(),
   /**
    * @property password
    * @default String
@@ -27,6 +33,7 @@ export default Component.extend({
   resetPasswordTask: task(function* (password, passwordConfirmation) {
     try {
       yield get(this, 'resetPassword')(password, passwordConfirmation);
+      get(this, 'flashMessages').clearMessages().success('You are now logged in');
       set(this, 'error', null);
     } catch(e) {
       set(this, 'error', e);
