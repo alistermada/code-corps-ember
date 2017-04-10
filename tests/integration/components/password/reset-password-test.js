@@ -1,5 +1,5 @@
 import Ember from 'ember';
-const { RSVP } = Ember;
+const { RSVP, getOwner } = Ember;
 import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
 import resetPasswordComponent from 'code-corps-ember/tests/pages/components/password/reset-password';
@@ -19,6 +19,8 @@ moduleForComponent('password/reset-password', 'Integration | Component | passwor
 
 test('it renders with two password inputs and correct label', function(assert) {
   assert.expect(8);
+  getOwner(this).lookup('service:flash-messages').registerTypes(['success']);
+
   this.resetPassword = function() {
     assert.ok(true);
   };
@@ -36,8 +38,9 @@ test('it renders with two password inputs and correct label', function(assert) {
   page.submit();
 });
 
-test('can fill out form and click enter', function(assert) {
+test('can fill out form and submit', function(assert) {
   assert.expect(2);
+  getOwner(this).lookup('service:flash-messages').registerTypes(['success']);
 
   this.resetPassword = function(password, passwordConfirmation) {
     assert.equal(password, 'uuidPassword');

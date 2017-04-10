@@ -33,7 +33,7 @@ test('it renders with email input and correct label', function(assert) {
   page.submit();
 });
 
-test('can fill out form and click enter', function(assert) {
+test('can fill out form and submit', function(assert) {
   assert.expect(2);
   getOwner(this).lookup('service:flash-messages').registerTypes(['success']);
 
@@ -50,6 +50,7 @@ test('can fill out form and click enter', function(assert) {
 
 test('500 error is displayed', function(assert) {
   assert.expect(1);
+
   this.forgotPassword = function() {
     return RSVP.Promise.reject({ isAdapterError: true, errors: [{ id: 'INTERNAL_SERVER_ERROR', title: '500 Internal server error', status: '500' }] });
   };
@@ -71,7 +72,7 @@ skip('can recover from error', function(assert) {
   };
   this.error = new Event('errors');
   this.error.isAdapterError = true;
-  this.error.errors = [{id: 'INTERNAL_SERVER_ERROR', title: '500 Internal Server Error'}];
+  this.error.errors = [{ id: 'INTERNAL_SERVER_ERROR', title: '500 Internal Server Error' }];
   this.render(hbs`{{password/forgot-password forgotPassword=forgotPassword error=error}}`);
 
   assert.equal(this.$('[data-test-id="error-msg"]').length, 1);
