@@ -35,6 +35,7 @@ export default Component.extend({
     try {
       yield get(this, 'forgotPassword')(email);
       get(this, 'flashMessages').clearMessages().success('If your email is associated with an account registered here, a password reset link has been sent to it.');
+      set(this, 'error', null);
     } catch(e) {
       set(this, 'error', e);
     }

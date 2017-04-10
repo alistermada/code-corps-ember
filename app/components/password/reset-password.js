@@ -3,6 +3,7 @@ const { Component, set, get } = Ember;
 import { task } from 'ember-concurrency';
 
 export default Component.extend({
+  classNames: ['reset-password-form'],
   /**
    * @property password
    * @default String
@@ -26,6 +27,7 @@ export default Component.extend({
   resetPasswordTask: task(function* (password, passwordConfirmation) {
     try {
       yield get(this, 'resetPassword')(password, passwordConfirmation);
+      set(this, 'error', null);
     } catch(e) {
       set(this, 'error', e);
     }
