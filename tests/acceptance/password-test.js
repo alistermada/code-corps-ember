@@ -54,7 +54,7 @@ test('visiting /password/forgot', function(assert) {
     assert.equal(currentURL(), '/password/forgot');
   });
 
-  passwordPage.form.sendForgotPasswordSuccessfully('admin@gmail.com');
+  passwordPage.forgotPasswordForm.sendForgotPasswordSuccessfully('admin@gmail.com');
 
   andThen(() => {
     assert.equal(currentURL(), '/');
