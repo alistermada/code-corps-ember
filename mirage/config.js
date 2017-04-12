@@ -179,7 +179,15 @@ export default function() {
 
     // just return something?
     return new Mirage.Response(201, {}, {
-      email: 'abc123@gmail.com'
+      email: 'test@test.com'
+    });
+  });
+
+  this.post('/password/reset', () => {
+
+    // just return something?
+    return new Mirage.Response(201, {}, {
+      email: 'test@test.com'
     });
   });
 

@@ -4,6 +4,7 @@ const { Route, get, inject: { service } } = Ember;
 export default Route.extend({
 
   ajax: service(),
+  session: service(),
 
   actions: {
     resetPassword(password, passwordConfirmation) {
@@ -13,6 +14,8 @@ export default Route.extend({
           password,
           passwordConfirmation
         }
+      }).then((json) => {
+        get(this, 'session').authenticate('authenticator:jwt', { identification: json.email, password });
       });
     }
   }

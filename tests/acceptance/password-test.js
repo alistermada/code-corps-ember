@@ -6,12 +6,23 @@ import { getFlashMessageCount } from 'code-corps-ember/tests/helpers/flash-messa
 moduleForAcceptance('Acceptance | password test');
 
 test('visiting /password/reset', function(assert) {
+  let email = 'test@test.com';
+  let password = 'password';
+
+  server.create('user', { email, password });
+
   passwordPage.visitReset();
 
   andThen(() => {
     assert.equal(currentURL(), '/password/reset');
   });
-  passwordPage.resetPasswordForm.sendResetPasswordSuccessfully('uuidPassword');
+
+  passwordPage.resetPasswordForm.sendResetPasswordSuccessfully('password');
+
+  andThen(() => {
+    assert.equal(currentURL(), '/projects');
+    assert.equal(getFlashMessageCount(this), 1, 'A flash message was shown.');
+  });
 });
 
 test('visiting /password/forgot', function(assert) {
