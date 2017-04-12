@@ -15,7 +15,7 @@ export default Route.extend({
           passwordConfirmation
         }
       }).then((json) => {
-        get(this, 'session').authenticate('authenticator:jwt', { identification: json.email, password });
+        return get(this, 'session').authenticate('authenticator:jwt', { identification: json.email, password });
       });
     }
   }

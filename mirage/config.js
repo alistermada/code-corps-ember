@@ -183,12 +183,28 @@ export default function() {
     });
   });
 
-  this.post('/password/reset', () => {
+  this.post('/password/reset', (_schema, request) => {
+    let params = request.requestBody;
+    let password = params.split('&')[0].split('=')[1];
+    let passwordConfirmation = params.split('&')[1].split('=')[1];
 
-    // just return something?
-    return new Mirage.Response(201, {}, {
-      email: 'test@test.com'
-    });
+    if (password === passwordConfirmation) {
+      return new Mirage.Response(201, {}, {
+        email: 'test@test.com'
+      });
+    } else {
+      let errorDetail = 'Your password do not match';
+      return new Mirage.Response(422, {}, {
+        errors: [
+          {
+            id: 'VALIDATION_ERROR',
+            title: '422',
+            detail: errorDetail,
+            status: 422
+          }
+        ]
+      });
+    }
   });
 
   /**
