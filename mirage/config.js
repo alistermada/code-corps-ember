@@ -185,8 +185,9 @@ export default function() {
 
   this.post('/password/reset', (_schema, request) => {
     let params = request.requestBody;
-    let password = params.split('&')[0].split('=')[1];
-    let passwordConfirmation = params.split('&')[1].split('=')[1];
+    let [first, second] = params.split('&');
+    let password = first.split('=')[1];
+    let passwordConfirmation = second.split('=')[1];
 
     if (password === passwordConfirmation) {
       return new Mirage.Response(201, {}, {

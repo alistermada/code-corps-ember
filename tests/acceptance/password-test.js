@@ -2,7 +2,6 @@ import { test } from 'qunit';
 import moduleForAcceptance from 'code-corps-ember/tests/helpers/module-for-acceptance';
 import passwordPage from '../pages/password';
 import { getFlashMessageCount } from 'code-corps-ember/tests/helpers/flash-message';
-import errorFormatterComponent from '../pages/components/error-formatter';
 
 moduleForAcceptance('Acceptance | password test');
 
