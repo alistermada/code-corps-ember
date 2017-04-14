@@ -17,7 +17,6 @@ module.exports = {
     'key-spacing': 'off',
     'new-cap': 'off',
     'new-cap': 'off',
-    'ember-suave/prefer-destructuring': 'off',
     'ember-suave/require-access-in-comments': 'off',
   },
   globals: {

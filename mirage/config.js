@@ -183,12 +183,8 @@ export default function() {
     });
   });
 
-  this.post('/password/reset', (_schema, request) => {
-    let params = request.requestBody;
-    let [first, second] = params.split('&');
-    let password = first.split('=')[1];
-    let passwordConfirmation = second.split('=')[1];
-
+  this.post('/password/reset', function() {
+    let { password, passwordConfirmation } = this._getAttrsForFormRequest(this.request);
     if (password === passwordConfirmation) {
       return new Mirage.Response(201, {}, {
         email: 'test@test.com'
