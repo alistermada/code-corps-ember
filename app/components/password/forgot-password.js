@@ -6,21 +6,16 @@ export default Component.extend({
   classNames: ['forgot-password-form'],
 
   /**
-   * @property currentUser
-   * @type Ember.Service
-   */
-  currentUser: service(),
-  /**
    * @property flashMessages
    * @type Ember.Service
    */
   flashMessages: service(),
 
   /**
-   * @property passwordConfirmation
+   * @property email
    * @default String
    */
-  passwordConfirmation: '',
+  email: '',
   /**
    * @property error
    */
@@ -28,8 +23,7 @@ export default Component.extend({
 
   /**
    * @property forgotPasswordTask
-   * @param password
-   * @param passwordConfirmation
+   * @param email
    */
   forgotPasswordTask: task(function* (email) {
     try {
@@ -45,8 +39,7 @@ export default Component.extend({
 
   /**
    * @method forgotPassword
-   * @param password
-   * @param passwordConfirmation
+   * @param email
    */
     forgotPassword(email) {
       return get(this, 'forgotPasswordTask').perform(email);
