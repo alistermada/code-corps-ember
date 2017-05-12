@@ -3,7 +3,7 @@ const { Component, set, get, inject: { service } } = Ember;
 import { task } from 'ember-concurrency';
 
 export default Component.extend({
-  classNames: ['reset-password-form'],
+  classNames: ['form--centered', 'reset-password-form'],
 
   /**
    * @property flashMessages
