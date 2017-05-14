@@ -16,6 +16,14 @@
 </div>
 <div class="thank-you-container__contributors">
   {{#each volunteers as |volunteer|}}
-    {{volunteer-headshot volunteer=volunteer data-test-selector="volunteer headshot"}}
+    {{#if volunteer.isLoaded}}
+      {{volunteer-headshot volunteer=volunteer data-test-selector="volunteer headshot"}}
+    {{else}}
+      <div class="volunteer-headshot-loading">
+        <div class="volunteer-headshot-loading__image icon large" ></div>
+        <div class="volunteer-headshot-loading__name"></div>
+        <div class="volunteer-headshot-loading__role"></div>
+      </div>
+    {{/if}}
   {{/each}}
 </div>

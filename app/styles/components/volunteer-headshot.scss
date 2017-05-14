@@ -1,9 +1,17 @@
-.volunteer-headshot {
+@mixin volunteer-headshot-shared-style {
   @include omega(6n);
   @include span-columns(2);
 
   display: inline-block;
   margin-bottom: 1em;
+
+  &__image {
+    border-radius: 4px;
+  }
+}
+
+.volunteer-headshot {
+  @include volunteer-headshot-shared-style;
 
   &__name {
     font-weight: 600;
@@ -15,8 +23,21 @@
     color: $text--light;
     margin-top: 0;
   }
+}
 
-  img {
-    border-radius: 4px;
+.volunteer-headshot-loading {
+  @include volunteer-headshot-shared-style;
+
+  div {
+    background-color: $background-gray;
+  }
+
+  &__image {
+    display: inline-block;
+  }
+
+  &__name, &__role {
+    height: 16px;
+    margin-top: 4px;
   }
 }
